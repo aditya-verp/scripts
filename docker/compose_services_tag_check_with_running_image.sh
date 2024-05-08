@@ -9,8 +9,7 @@ cd "$(dirname "$COMPOSE_FILE")" || exit
 
 # Get a list of service names
 awk '/^[[:space:]]*[^#]*:$/{sub(/:/,""); gsub(/[[:space:]]*/, ""); print}' $COMPOSE_FILE > /tmp/service_list.txt
-sed -i -e '1,/^services$/d; /^services$/d; s/ports//g; s/networks//g; s/labels//g; s/environment//g' -e '/^$/d' /tmp/service_list.txt
-
+sed -i -e '1,/^services$/d; /^services$/d; s/ports//g; s/networks//g; s/labels//g; s/environment//g; s/depends_on//g; s/healthcheck//g' -e '/^$/d' /tmp/service_list.txt
 # Get a list of tags
 imagetags_list=$(cat $COMPOSE_FILE | grep -E "^ *image:.*" | awk -F':' '{print $3}')
 
