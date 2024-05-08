@@ -1,6 +1,8 @@
 #!/bin/bash
 # It extracts a list of service names from a Docker Compose file, and checks if each service is running the latest image tag specified in the Docker Compose file, displaying the comparison between the specified tag and the running container tag.
 # Path to the Docker Compose file
+#NOTE: In docker-compose servicename & containername must be same
+
 COMPOSE_FILE="/var/home/docker-user/autodeploy/Bansira-SuperApp.Microservices/utils/deploy/docker-compose.yaml"
 
 cd "$(dirname "$COMPOSE_FILE")" || exit
